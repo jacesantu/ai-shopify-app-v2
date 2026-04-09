@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "ai-shopify-app"
+version = "1.0.0"
+description = "AI Customer Service for Shopify Stores"
+
+dependencies = [
+    "Flask==3.0.0",
+    "requests==2.31.0",
+    "python-dotenv==1.0.0",
+    "gunicorn==21.2.0"
+]
+
+[project.scripts]
+app = "app:app"
+
+[tool.vercel]
+build-command = "pip install -r requirements.txt"
+output-directory = "."
+framework = "flask"
+runtime = "python"
