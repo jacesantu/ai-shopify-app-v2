@@ -1,20 +1,31 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 
 [project]
 name = "ai-shopify-app"
 version = "1.0.0"
 description = "AI Customer Service for Shopify Stores"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "AI Support"}]
 
 dependencies = [
     "Flask==3.0.0",
     "requests==2.31.0",
-    "python-dotenv==1.0.0",
-    "gunicorn==21.2.0"
+    "python-dotenv>=1.0.0",
+    "gunicorn>=21.2.0"
 ]
 
 [project.scripts]
 app = "app:app"
+
+[tool.setuptools]
+packages = []
+py-modules = ["app"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = ["templates/*", "static/*", "static/**/*"]
 
 [tool.vercel]
 build-command = "pip install -r requirements.txt"
